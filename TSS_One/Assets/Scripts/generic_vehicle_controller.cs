@@ -25,7 +25,10 @@ public class generic_vehicle_controller : MonoBehaviour
     {
         float motor = maxMotorTorque * Input.GetAxis("Vertical");
         float steering = maxSteeringAngle * Input.GetAxis("Horizontal");
-        engineRPM = GetComponentInChildren<RealisticEngineSound>().engineCurrentRPM = 0.95f * engineRPM + 0.05f * Mathf.Abs(axleInfos[0].leftWheel.rpm * 9.5f);
+        if (GetComponentInChildren<RealisticEngineSound>())
+        {
+            engineRPM = GetComponentInChildren<RealisticEngineSound>().engineCurrentRPM = 0.95f * engineRPM + 0.05f * Mathf.Abs(axleInfos[0].leftWheel.rpm * 9.5f);
+        }
 
         foreach (AxleInfo axleInfo in axleInfos)
         {
